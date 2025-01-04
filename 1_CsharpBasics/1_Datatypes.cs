@@ -28,7 +28,7 @@ namespace _1_CsharpBasics
 
             /// 1. Byte 1 Byte - 8bits (256 [ 0 to 255] )
             /// 2. Short 2 Bytes - 16bits (65536 [ 0 to 65535] )
-            /// 3. Int 4 Bytes - 32bits (
+            /// 3. Int 4 Bytes - 32bits (18,446,744,073,709,551,61618,446,744,073,709,551,616 [ 0 to 18,446,744,073,709,551,61618,446,744,073,709,551,615]
             /// 4. Long 8 Bytes - 64bits (
             /// 5. BigInt 16 Bytes - 128Bits (
         }
