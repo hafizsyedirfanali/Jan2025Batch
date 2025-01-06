@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _1_CsharpBasics
+﻿namespace _1_CsharpBasics
 {
+    /// <summary>
+    /// Memory are basically classified in two types
+    /// 1. Stack - Limited
+    /// 2. Heap - Unlimited (upto RAM capacity)
+    /// Datatypes are of two types:
+    /// 1. Valued - integer, fractional, boolean, character
+    ///     they are stored in stack
+    ///     these are disposed/deleted at the end of scope
+    ///     Life starts where it is declared and ends at the end of scope
+    /// 2. Referenced (pointers) - string, ...
+    ///     they are stored in heap
+    ///     when the labels are deleted at the end of scope,
+    ///     their values are now called as garbage/unreferenced data.
+    ///     these are disposed/deleted by the GC
+    /// </summary>
     public class _1_Datatypes
     {
         public static void Test()
@@ -29,7 +37,7 @@ namespace _1_CsharpBasics
 
             /// 1. Byte 1 Byte - 8bits (256 [ 0 to 255] )
             /// 2. Short 2 Bytes - 16bits (65536 [ 0 to 65535] )
-            /// 3. Int 4 Bytes - 32bits (18,446,744,073,709,551,61618,446,744,073,709,551,616 [ 0 to 18,446,744,073,709,551,61618,446,744,073,709,551,615]
+            /// 3. Int 4 Bytes - 32bits (2147483647 [ 0 to 2147483646]
             /// 4. Long 8 Bytes - 64bits (
             /// 5. BigInt 16 Bytes - 128Bits (
             /// 
@@ -54,6 +62,19 @@ namespace _1_CsharpBasics
             double d = 1.1d;
             decimal dm = 1.1m;
         }
-        //boolean, char, string
+        public static void BooleanDatatype()
+        {
+            bool b = true;
+            b = false;
+        }
+        public static void CharacterDatatype()
+        {
+            char c = 's';
+        }
+        public static void StringDatatype()
+        {
+            string s = "Hello";
+            s = "world";
+        }
     }
 }
