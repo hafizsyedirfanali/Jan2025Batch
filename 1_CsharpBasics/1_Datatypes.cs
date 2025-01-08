@@ -50,6 +50,7 @@
             long sl = 10;//??
             ulong ul = 0;//??
             Int128 bi = 10;//Big int
+            UInt128 unsignedI = 10;
         }
 
         public static void FractionalDatatype()

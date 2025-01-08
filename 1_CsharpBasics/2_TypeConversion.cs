@@ -7,7 +7,7 @@ public class _2_TypeConversion
 {
     public static void Test()
     {
-        Explicit();
+        ReferencedToValuedTypeMethod1();
     }
 
     public static void Implicit()
@@ -59,5 +59,82 @@ public class _2_TypeConversion
         //bool bl = (bool)b;invalid conversion see following example
         ///00000011 -3
         ///       1 -true
+    }
+
+    /// <summary>
+    /// Conversion between Valued and Referenced is Explicit
+    /// </summary>
+    public static void ValuedToReferencedDataType()
+    {
+        //Integer to string
+        int i = 10;
+        // a string is represented using double quotes
+        // "Hello" is a string
+        string str = i.ToString();
+        //above command will convert 10 to "10"
+        byte b = 10;
+        str = b.ToString();
+
+        short s = 10;
+        str = s.ToString();
+
+        long l = 10;
+        str = l.ToString();
+
+        Int128 big = 10;
+        str = big.ToString();
+
+        ///fractional numbers to string
+        float f = 1.1f;
+        str = f.ToString();//1.1 will be "1.1"
+
+        double d = 1.1d;
+        str = d.ToString();
+
+        decimal dm = 1.1m;
+        str = dm.ToString();
+
+        //boolean type to string
+        bool bl = true;
+        str = bl.ToString();//true will be "true"
+
+        //character type to string
+        char ch = 'A';
+        str = ch.ToString(); //'A' will be now "A"
+    }
+    /// <summary>
+    /// Method 1 using Convert class
+    /// </summary>
+    public static void ReferencedToValuedTypeMethod1()
+    {
+        string str = "";
+        //to integer
+        str = "10";
+        int i = Convert.ToInt32(str);
+
+        //to byte
+        byte b = Convert.ToByte(str);
+
+        //to short 
+        short s = Convert.ToInt16(str);
+
+        //to long 
+        long l = Convert.ToInt64(str);
+
+        //to int128
+        //Int128 i128 = Convert. NOT AVAILABLE
+
+        //to float,double and decimal
+        float f = Convert.ToSingle(str);
+        double d = Convert.ToDouble(str);
+        decimal dm = Convert.ToDecimal(str);
+
+        //to boolean
+        str = "true";
+        bool bl = Convert.ToBoolean(str);
+
+        //to char
+        str = "AA";
+        char ch = Convert.ToChar(str);
     }
 }
