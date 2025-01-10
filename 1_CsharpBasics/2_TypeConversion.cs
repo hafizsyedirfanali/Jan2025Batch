@@ -7,7 +7,7 @@ public class _2_TypeConversion
 {
     public static void Test()
     {
-        ReferencedToValuedTypeMethod1();
+        ReferencedToValuedTypeMethod2();
     }
 
     public static void Implicit()
@@ -136,5 +136,45 @@ public class _2_TypeConversion
         //to char
         str = "AA";
         char ch = Convert.ToChar(str);
+    }
+
+    public static void ReferencedToValuedTypeMethod2()
+    {
+        string str = "10";
+        //byte
+        byte b = byte.Parse(str);//this will parse/convert string to byte
+
+        //short 
+        short s = short.Parse(str);
+
+        //int
+        int i = int.Parse(str);
+
+        //long
+        long l = long.Parse(str);
+
+        //big int
+        Int128 int128 = Int128.Parse(str);
+
+        //float 
+        float f = float.Parse(str);
+
+        //double 
+        double d = double.Parse(str);
+
+        //decimal
+        decimal dm = decimal.Parse(str);
+
+        //boolean
+        str = "true";
+        bool bl = bool.Parse(str);
+
+        //character
+        str = "A";
+        char ch = char.Parse(str);
+    }
+    public static void ReferencedToValuedTypeMethod3()
+    { 
+        //will study after conditional operators if else
     }
 }
