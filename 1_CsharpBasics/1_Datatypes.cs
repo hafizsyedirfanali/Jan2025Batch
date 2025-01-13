@@ -14,6 +14,8 @@
     ///     when the labels are deleted at the end of scope,
     ///     their values are now called as garbage/unreferenced data.
     ///     these are disposed/deleted by the GC
+    /// 3. Nullables in Valued 
+    /// 4. Nullables in Referenced (Version Gap)
     /// </summary>
     public class _1_Datatypes
     {

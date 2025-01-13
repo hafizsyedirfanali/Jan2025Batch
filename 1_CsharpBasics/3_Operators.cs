@@ -8,16 +8,84 @@
 /// 1. Arithmatical [done]
 /// 2. Logical [done]
 /// 3. Relational [done]
-/// 4. Conditional
+/// 4. Conditional (Ternary,...)
 /// 5. Bitwise [done]
-/// 6. Increment/Decrement
+/// 6. Increment/Decrement [done]
 /// 7. Assignment [done]
 /// </summary>
 public class _3_Operators
 {
     public static void Test()
     {
-        Bitwise();
+        IncrementDecrement();
+    }
+    public static void Conditional()
+    {
+        //Ternary operator ? :
+        //example 1
+        int i = 100, j;
+        j = i > 15 ? 10 : i;
+
+        //example 2
+        int marks = 15;
+        string result = marks >= 40 ? "PASS" : "FAIL";
+        //if marks = 15
+        //     result =   15 >=  40 ? "PASS" : "FAIL";
+        //     result =   false     ? "PASS" : "FAIL";
+        //     result =   "FAIL";
+        //  OR
+        //if marks = 50
+        //     result =   50 >=  40 ? "PASS" : "FAIL";
+        //     result =   true     ? "PASS" : "FAIL";
+        //     result =   "PASS";
+
+        //example 3
+        int a;
+        byte b = 10;
+        a = b > 10 ? 10 : b;
+        //= logical expr/relational expr ? (if true) : (if false); 
+    }
+    public static void IncrementDecrement()
+    {
+        // ++ and -- are increment and decrement operators
+        //both are unary.
+        //each has two sub types
+        //1. Preincrement and post increment
+        //2. Predecrement and post decrement
+
+        int i = 10;
+        //increment
+        i++;
+        ++i;
+        //decrement
+        i--;
+        --i;
+        //Preincrement
+        Console.WriteLine(++i);
+        //Post increment
+        Console.WriteLine(i++);
+        //Predecrement
+        Console.WriteLine(--i);
+        //Post decrement
+        Console.WriteLine(i--);
+
+        Console.WriteLine("----------------------");
+        i = 10;
+        int j = --i + i++;
+        //in above equation, initially --i will be executed
+        //i will become 9;
+        //equation will become j = 9 + 9(post incr)
+        //j = 18 will be assigned to j and then i will increment to 10
+        i = 10;
+        j = i++ + ++i;//a+b+c
+        i = 10;
+        j = --i + --i;
+        //= --10 + --10;
+        //=    9 + --9;
+        //=    9 +   8;
+        //=    17
+        Console.WriteLine(j);
+        Console.WriteLine(i);
     }
     public static void Bitwise()
     {
