@@ -1,5 +1,5 @@
 ﻿
-_1_CsharpBasics._3_Operators.Test();
+_1_CsharpBasics._4_StringManipulation.Test();
 
 
 

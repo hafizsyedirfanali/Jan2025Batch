@@ -23,7 +23,29 @@
         {
             IntegerDatatype();
         }
+        public static void NullableReferenceType()
+        {
+            string? s = null;
+            //more types
+        }
+        public static void NullableValuedType()
+        {
+            //Nullabe types are decorated with Question Mark '?'
+            byte? b = null;
+            short? s = null;
+            int? i = null;
+            long? l = null;
+            Int128? big = null;
 
+            float? fl = null;
+            double? d = null;
+            decimal? dm = null;
+
+            bool? bl = null;
+
+            char? ch = null;
+
+        }
         public static void IntegerDatatype()
         {
             ///0  00
