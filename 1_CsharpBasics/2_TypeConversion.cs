@@ -7,7 +7,7 @@ public class _2_TypeConversion
 {
     public static void Test()
     {
-        ReferencedToValuedTypeMethod2();
+        ReferencedToValuedTypeMethod3();
     }
 
     public static void Implicit()
@@ -174,7 +174,28 @@ public class _2_TypeConversion
         char ch = char.Parse(str);
     }
     public static void ReferencedToValuedTypeMethod3()
-    { 
-        //will study after conditional operators if else
+    {
+        Console.Write("Enter a number: ");
+        string? userInput = Console.ReadLine();
+        bool isSuccess = byte.TryParse(userInput,out byte b);
+        if (isSuccess)
+        {
+            Console.WriteLine($"Converted value is {b}");
+        }
+        else
+        {
+            Console.WriteLine("Failed to convert the given value.");
+        }
+
+        isSuccess = short.TryParse(userInput, out short s);
+        if (isSuccess)
+        {
+            Console.WriteLine($"Converted value is {s}");
+        }
+        else
+        {
+            Console.WriteLine("Failed to convert the given value.");
+        }
+        //and so on
     }
 }
