@@ -4,7 +4,23 @@ public class _5_ConditionalStatements
 {
     public static void Test()
     {
-        IfElseLadder();
+        SwitchCase();
+    }
+    public static void SwitchCase()
+    {
+        Console.Write("Enter Roll No.: ");
+        int rollNo = Convert.ToInt32(Console.ReadLine());
+        switch (rollNo)
+        {
+            case 1: Console.WriteLine("ONE");break;
+            case 2: Console.WriteLine("TWO");break;
+            case 3: Console.WriteLine("THREE");break;
+            case 4: Console.WriteLine("FOUR");break;
+            case 5: Console.WriteLine("FIVE");break;
+            case 6: Console.WriteLine("SIX");break;
+            default: Console.WriteLine("INVALID");break;
+
+        }
     }
     public static void IfElseStatement()
     {
@@ -56,6 +72,25 @@ public class _5_ConditionalStatements
     }
     public static void NestedIfElse()
     {
-        //tomorrow
+        Console.WriteLine("Enter Chapter No.");
+        int chapterNo = Convert.ToInt32(Console.ReadLine());
+        if(chapterNo == 1)
+        {
+            Console.WriteLine("Enter Topic of Ch.1: ");
+            int topicNo = Convert.ToInt32(Console.ReadLine());
+            if(topicNo == 1)
+            {
+                Console.WriteLine("This is topic 1 content.");
+            }
+            else
+            {
+                Console.WriteLine("This is remaining content");
+            }
+
+        }
+        else
+        {
+            Console.WriteLine("This is remaining content of the book");
+        }
     }
 }

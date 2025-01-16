@@ -22,6 +22,7 @@ public class _3_Operators
     public static void Conditional()
     {
         //Ternary operator ? :
+        //If else in single line
         //example 1
         int i = 100, j;
         j = i > 15 ? 10 : i;
