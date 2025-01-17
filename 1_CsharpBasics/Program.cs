@@ -1,5 +1,5 @@
 ﻿
-_1_CsharpBasics._5_ConditionalStatements.Test();
+_1_CsharpBasics._6_Loops.Test();
 
 
 
