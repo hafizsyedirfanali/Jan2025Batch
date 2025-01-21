@@ -1,5 +1,5 @@
 ﻿
-_1_CsharpBasics._6_Loops.Test();
+_1_CsharpBasics._7_Arrays.Test();
 
 
 
