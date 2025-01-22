@@ -1,15 +1,18 @@
 ﻿namespace _1_CsharpBasics;
-
+/// <summary>
+/// Fixed size array. eg. array[,]
+/// Jagged array  eg, array[][]
+/// </summary>
 public class _7_Arrays
 {
     public static void Test()
     {
-        ThreeDimensionalArray();
+        Jagged2DArrays();
     }
     public static void BasicArray()
     {
         //                0  1  2  3  4
-        int[] rollNos = [ 1, 2, 3, 4, 5 ];
+        int[] rollNos = [1, 2, 3, 4, 5];
         //accessing array elements
         Console.WriteLine(rollNos[0]);//1
         Console.WriteLine(rollNos[1]);//2
@@ -23,7 +26,7 @@ public class _7_Arrays
         {
             rollNos[i] *= 2;
         }
-        
+
         // printing the updated array
         foreach (var rollNo in rollNos)
         {
@@ -54,7 +57,7 @@ public class _7_Arrays
         rollNos5 = new int[5];//memory allocation
         rollNos5[0] = 1;//assigning values
         rollNos5[1] = 2;
-        
+
         //printing the rollNos using for loop
         for (int i = 0; i < rollNos.Length; i++)
         {
@@ -104,7 +107,7 @@ public class _7_Arrays
         {
             for (int topic = 0; topic < topics.GetLength(1); topic++)//2 times
             {
-                Console.Write(topics[ch, topic]+"   ");
+                Console.Write(topics[ch, topic] + "   ");
             }
             Console.WriteLine();
         }
@@ -179,7 +182,47 @@ public class _7_Arrays
         //and so on...
         //accessing values
         //to access 24
-        int topic0Ch1SubT2SubSubT3 = topics[0, 1, 2, 3];
+        int topic0Ch1SubT2SubSubT3 = topics[1, 0, 0, 1];//-->26
+
+        // Commented matrix representation of the 4D array
+        /*
+        topics[0, 0, 0, *] = { 1, 2, 3, 4 }
+        topics[0, 0, 1, *] = { 5, 6, 7, 8 }
+        topics[0, 0, 2, *] = { 9, 10, 11, 12 }
+        topics[0, 1, 0, *] = { 13, 14, 15, 16 }
+        topics[0, 1, 1, *] = { 17, 18, 19, 20 }
+        topics[0, 1, 2, *] = { 21, 22, 23, 24 }
+        topics[1, 0, 0, *] = { 25, 26, 0, 0 }
+        */
+    }
+
+
+    //JAGGED ARRAYS (ARRAY OF ARRAYS)
+    public static void Jagged2DArrays()
+    {
+        //Jagged array is an array of arrays
+        //datatype[][] arrayName = new datatype[size][];
+        int[][] jaggedArray = //array of arrays
+        [
+            //assigning values
+            [10,20,30,40,50],//array of size 5
+            [10,20,30],//array of size 3
+            [10,20,30,40],//array of size 4
+        ];
+        //accessing values
+
+        int val1 = jaggedArray[0][0];//get the value of first element of the first array
+        int val2 = jaggedArray[1][1];
+        int val3 = jaggedArray[2][2];
+        //printing the jaggedArray using for loop
+        for (int i = 0; i < jaggedArray.Length; i++)
+        {
+            for (int j = 0; j < jaggedArray[i].Length; j++)
+            {
+                Console.Write(jaggedArray[i][j] + "   ");
+            }
+            Console.WriteLine();
+        }
     }
 }
     
