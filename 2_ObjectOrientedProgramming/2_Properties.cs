@@ -20,13 +20,32 @@ public class _2_Properties
         i = j; //writing operation. writing value into i
 
         TestClass t = new TestClass();
+        //simple property
         t.ASimpleProperty = 10;//this assigning task is done by setter method
 
         int value = t.ASimpleProperty;//getter method will copy the value from property and returns that value
+
+        //full property
+        t.AFullProperty = 20;//this assigning task is done by setter method
+
+        int value2 = t.AFullProperty;//getter method will copy the value from property and returns that value
     }
     public class TestClass
     {
         //simple property
         public int ASimpleProperty { get; set; }
+        //full property
+        private int _aFullProperty;
+        public int AFullProperty
+        {
+            get
+            {
+                return _aFullProperty;
+            }
+            set
+            {
+                _aFullProperty = value;
+            }
+        }
     }
 }

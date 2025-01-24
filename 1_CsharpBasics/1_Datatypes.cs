@@ -9,7 +9,7 @@
     ///     they are stored in stack
     ///     these are disposed/deleted at the end of scope
     ///     Life starts where it is declared and ends at the end of scope
-    /// 2. Referenced (pointers) - string, ...
+    /// 2. Referenced (pointers) - string, reference variable (instance/objects) ...
     ///     they are stored in heap
     ///     when the labels are deleted at the end of scope,
     ///     their values are now called as garbage/unreferenced data.
