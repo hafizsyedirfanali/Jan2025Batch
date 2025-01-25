@@ -17,19 +17,19 @@ public class _1_Classes
     {
         //A class as a blueprint
         Student s1 = new Student();
-        s1.age = 10;
-        int age = s1.age;
-        s1.name = "Abcd";
-        s1.gender = "M";
-        s1.rollNo = 1;
-        s1.mobileNo = "3324324";
+        s1.Age = 10;
+        int age = s1.Age;
+        s1.Name = "Abcd";
+        s1.Gender = "M";
+        s1.RollNo = 1;
+        s1.MobileNo = "3324324";
 
         Student s2 = new Student();
-        s2.age = 10;
-        s2.name = "Abcd";
-        s2.gender = "M";
-        s2.rollNo = 1;
-        s2.mobileNo = "3324324";
+        s2.Age = 10;
+        s2.Name = "Abcd";
+        s2.Gender = "M";
+        s2.RollNo = 1;
+        s2.MobileNo = "3324324";
 
         //new keyword is used to create an object of a class
         //it request OS for memory allocation
@@ -41,15 +41,31 @@ public class _1_Classes
         //or pointers : they are used to point to the memory location
         //Instantiation : creating an object/instance of a class
 
-
+        Chair chair = new Chair();
+        chair.Height = 25;
+        chair.Width = 20;
+        chair.Type = "Rolling";
+        chair.BrandName = "ABCD";
+        chair.Cost = 1000;
+        Console.WriteLine($"Height: {chair.Height} and Width:{chair.Width}");
+        //create class for Mobile, Laptop, Car, etc. Add properties to them.
+        //Create their objects. Assign values and print them
 
     }
     public class Student
     {
-        public int rollNo;
-        public string name;
-        public int age;
-        public string gender;
-        public string mobileNo;
+        public int RollNo { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+        public string MobileNo { get; set; }
+    }
+    public class Chair
+    {
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public string Type { get; set; }
+        public string BrandName { get; set; }
+        public int Cost { get; set; }
     }
 }

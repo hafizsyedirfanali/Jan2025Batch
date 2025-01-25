@@ -47,5 +47,12 @@ public class _2_Properties
                 _aFullProperty = value;
             }
         }
+        //property with private setter method / set accessor
+        //this can be written/set internally from within the class
+        public int Sum { get; private set; }
+        //Readonly property
+        //This cannot be written from anywhere except 1. direct initialization 2._______________
+        public int Area { get; }
+
     }
 }
