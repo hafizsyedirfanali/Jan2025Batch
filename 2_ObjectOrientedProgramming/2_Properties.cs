@@ -52,7 +52,7 @@ public class _2_Properties
         public int Sum { get; private set; }
         //Readonly property
         //This cannot be written from anywhere except 1. direct initialization 2._______________
-        public int Area { get; }
+        public int Area { get; } = 30;//Direct Assignment/Initialization
 
     }
 }

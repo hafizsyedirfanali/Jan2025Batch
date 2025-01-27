@@ -31,7 +31,7 @@ public class _1_Classes
         s2.RollNo = 1;
         s2.MobileNo = "3324324";
 
-        //new keyword is used to create an object of a class
+        //new keyword is used to create an object/instance of a class
         //it request OS for memory allocation
         //in return it brings starting address of the memory
 
