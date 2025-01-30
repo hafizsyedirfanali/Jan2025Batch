@@ -15,6 +15,10 @@ public class _4_Methods
 {
     public void Test()
     {
+        TestCallByValue();
+    }
+    public void TestCalling()
+    {
         //1. Calling Greet method
         Greet();
         //2. Calling GenerateRandomNumber method
@@ -45,7 +49,17 @@ public class _4_Methods
         //10. Calling DifferenceAndSum method
         (int diff1, int sum1) = DifferenceAndSum(10, 20);
         Console.WriteLine($"Difference: {diff1}, Sum: {sum1}");
-
+        //11. Calling Divide method
+        (int quotient, int remainder) = Divide(10, 3);
+        Console.WriteLine($"Quotient: {quotient}, Remainder: {remainder}");
+        //12. Calling Add method
+        value = Add(10, 20);//Calling Add method with two parameters
+        value = Add(10, 20, 30);//Calling Add method with three parameters
+        value = Add(10, 20, 30, 40);//Calling Add method with four parameters
+        //13. Calling Concatenate method
+        str = Concatenate("Hello", "World");
+        str = Concatenate(10, "World");
+        str = Concatenate("Hello", 10);
     }
     //Create a Method that does not take parameter and does not return any value
     public void Greet()
@@ -123,4 +137,62 @@ public class _4_Methods
     //create a method "Divide" that takes two
     //int parameters a dividend and a divisor
     //and returns quotient and remainder
+    public (int Quotient, int Remainder) Divide(int dividend, int divisor)
+    {
+        return (dividend / divisor, dividend % divisor);
+    }
+
+    //Method Overloading
+    //Method overloading is a feature that allows a class to have
+    //more than one method having the same name,
+    //if their parameter lists (parameter type and sequence) are different.
+    //It is similar to constructor overloading in C#.
+    //Method overloading is also known as compile-time polymorphism.
+    //Method overloading is a type of static polymorphism.
+    //Static polymorphism is achieved through method overloading and operator overloading.
+    public int Add(int a, int b)//A version of Add method
+    {
+        return a + b;
+    }
+    public int Add(int a, int b, int c)//Another version of Add method
+    {
+        return a + b + c;
+    }
+    public int Add(int a, int b, int c, int d)//Another version of Add method
+    {
+        return a + b + c + d;
+    }
+    //Add methods has three overloaded versions
+    //Now write overloaded versions of Concatenation method
+    //First version takes two strings and returns a string
+    public string Concatenate(string s1, string s2)
+    {
+        return s1 + s2;
+    }
+    //Second version takes an int and a string and returns a string
+    public string Concatenate(int n, string s)
+    {
+        return n + s;
+    }
+    //Third version takes a string and an int and returns a string
+    public string Concatenate(string s, int n)
+    {
+        return s + n;
+    }
+
+    //METHOD CALLING
+    //There are two types of method calling 1. Call by Value & 2. Call by Reference
+
+    //1. Call by Value
+    public void TestCallByValue()
+    {
+        int x = 5;
+        CallByValue(x);
+    }
+    public void CallByValue(int y)
+    {
+        y = y + 1;
+    }
+
+    //2. Call by Reference
 }
