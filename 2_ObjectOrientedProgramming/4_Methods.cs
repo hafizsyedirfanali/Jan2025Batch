@@ -15,7 +15,7 @@ public class _4_Methods
 {
     public void Test()
     {
-        TestCallByValue();
+        ReferenceUsingRefCallerMethod();
     }
     public void TestCalling()
     {
@@ -195,4 +195,49 @@ public class _4_Methods
     }
 
     //2. Call by Reference
+    //We have three keywords to achieve call by reference.
+    //they are in, out and ref
+    //in keyword : it is used to specify that the variable can only read (input) the value
+    //out keyword: it is used to specify that the variable will be returning the value
+    //or that the function/method will be writing (output) into that variable
+    //ref keyword: it is used to specify that the function can read or write into that variable
+
+    //Call by Reference using in keyword
+    public void ReferenceUsingInCallerMethod()
+    {
+        int x = 10;//Initialization is mandatory.
+        ReferenceUsingInCalledMethod(in x);
+    }
+    public void ReferenceUsingInCalledMethod(in int y)
+    {
+        //y = y + 1; //Error: Cannot assign to 'in int' because it is a readonly variable
+    }
+    //Call by Reference using out keyword
+    public void ReferenceUsingOutCallerMethod()
+    {
+        int x;//Initialization is not mandatory.
+        ReferenceUsingOutCalledMethod(out x);
+        Console.WriteLine(x);
+    }
+    public void ReferenceUsingOutCalledMethod(out int y)
+    {
+        y = 10;//Assignment is mandatory.
+    }
+    //Call by Reference using ref keyword
+    public void ReferenceUsingRefCallerMethod()
+    {
+        int x = 10;//Initialization is mandatory.
+        ReferenceUsingRefCalledMethod(ref x);
+        Console.WriteLine(x);
+    }
+    public void ReferenceUsingRefCalledMethod(ref int y)
+    {
+        y = y + 1;//writing is not mandatory.
+    }
+    //Write a method that takes a string and an out int parameter
+    //Its name is MyParseByte
+    public void MyParseByte(string s, out int value)
+    {
+        value = int.Parse(s);
+    }
 }
