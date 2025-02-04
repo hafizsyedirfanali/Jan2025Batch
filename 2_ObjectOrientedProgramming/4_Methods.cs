@@ -236,8 +236,53 @@ public class _4_Methods
     }
     //Write a method that takes a string and an out int parameter
     //Its name is MyParseByte
+    public void CallingParseMethod()
+    {
+        MyParseByte("10", out int result);
+        Console.WriteLine(result);
+    }
     public void MyParseByte(string s, out int value)
     {
         value = int.Parse(s);
+    }
+    //write a Addition method that takes
+    //two in int type parameters
+    //and one out int parameter and perform addition 
+    public void CallingAdditionMethod()
+    {
+        int a = 10, b = 20;
+        Add(in a, in b, out int result);
+        Console.WriteLine(result);
+    }
+    public void Add(in int a,in int b, out int result)
+    {
+        result = a + b;
+    }
+    //write a subtraction method that takes
+    //two in int type parameters
+    //and one out int parameter and perform subtraction
+    //
+
+    public void CallingIncrementMethod()
+    {
+        int a = 10;
+        Increment(ref a);
+        Console.WriteLine(a);
+    }
+    public void Increment(ref int a)
+    {
+        a = a + 1;
+    }
+    //if a number is divisible by 2 then it is even
+    //num % 2 == 0
+    public void CallingIsEvenMethod()
+    {
+        int num = 10;
+        IsEven(in num, out bool result);
+        Console.WriteLine(result);
+    }
+    public void IsEven(in int num, out bool result)
+    {
+        result = num % 2 == 0;
     }
 }
