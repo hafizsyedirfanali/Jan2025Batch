@@ -8,6 +8,6 @@
 //}
 //_2_ObjectOrientedProgramming._4_Methods.Test();
 
-_2_ObjectOrientedProgramming._4_Methods obj = 
-    new _2_ObjectOrientedProgramming._4_Methods();
+_2_ObjectOrientedProgramming._5_Constructors obj = 
+    new _2_ObjectOrientedProgramming._5_Constructors();
 obj.Test();
