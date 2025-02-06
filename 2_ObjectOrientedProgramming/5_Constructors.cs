@@ -5,12 +5,12 @@
 /// is overridden
 /// A class can have multiple constructors called constructor overloading
 /// 
+public class _5_Constructors
 /// When we invoke the constructor using 
 /// new keyword then the constructor creates the class instance
 /// and after instantiation it immediately executes the 
 /// instructions (block of code) within the curly braces
 /// </summary>
-public class _5_Constructors
 {
     public void Test()
     {

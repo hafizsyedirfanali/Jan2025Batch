@@ -8,7 +8,7 @@
 /// 3. Methods
 /// 4. Constructors
 /// 5. Destructor
-/// 6. Classes
+/// 6. Classes: Nested Classes
 /// 7. Structures (structs)
 /// </summary>
 public class _1_Classes
