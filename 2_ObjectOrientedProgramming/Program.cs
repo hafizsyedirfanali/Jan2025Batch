@@ -8,6 +8,5 @@
 //}
 //_2_ObjectOrientedProgramming._4_Methods.Test();
 
-_2_ObjectOrientedProgramming._5_Constructors obj = 
-    new _2_ObjectOrientedProgramming._5_Constructors();
+_2_ObjectOrientedProgramming._10_Polymorphism obj = new ();
 obj.Test();

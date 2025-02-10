@@ -8,7 +8,7 @@ public class _10_Polymorphism
 {
     public void Test()
     {
-
+        TestMultilevelPolyMorphism();
     }
     //Compile Time Polymorphism
     public class CompileTimePolymorphism
@@ -59,21 +59,52 @@ public class _10_Polymorphism
 
     public void TestMultilevelPolyMorphism()
     {
-        MultilevelBaseClass multilevelBaseClass = new MultilevelBaseClass();
-        MultilevelBaseClass multilevelDerivedClass1 = new MultilevelDerivedClass1();
-        MultilevelBaseClass multilevelDerivedClass2 = new MultilevelDerivedClass2();
+        //MultilevelBaseClass multilevelBaseClass = new MultilevelBaseClass();
+        //MultilevelBaseClass multilevelDerivedClass1 = new MultilevelDerivedClass1();
+        //MultilevelBaseClass multilevelDerivedClass2 = new MultilevelDerivedClass2();
+
+        MultilevelBaseClass multilevelBaseClass = new MultilevelBaseClass(10);
+        MultilevelBaseClass multilevelDerivedClass1 = new MultilevelDerivedClass1(10);
+        MultilevelBaseClass multilevelDerivedClass2 = new MultilevelDerivedClass2(10);
+        ///whenever you call the constructor of the child class, 
+        ///the default constructor of the parent class is called first.
+        ///we will use this concept in the the database context class in Entity Framework.
     }
     //Multilevel Inheritance uses polymorphism
     public class MultilevelBaseClass
     {
+        public MultilevelBaseClass()
+        {
+
+        }
+        public MultilevelBaseClass(int a)
+        {
+            
+        }
         //Grand Parent class
     }
     public class MultilevelDerivedClass1 : MultilevelBaseClass
     {
+        public MultilevelDerivedClass1():base()
+        {
+                
+        }
+        public MultilevelDerivedClass1(int a):base(a)//similar will be used in Entity Framework Database Context
+        {
+            
+        }
         //Parent class
     }
     public class MultilevelDerivedClass2 : MultilevelDerivedClass1
     {
+        public MultilevelDerivedClass2()
+        {
+            
+        }
+        public MultilevelDerivedClass2(int a):base(a)
+        {
+            
+        }
         //Child class
     }
 }
