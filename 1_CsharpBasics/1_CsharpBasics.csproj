@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\2_ObjectOrientedProgramming\2_ObjectOrientedProgramming.csproj" />
+  </ItemGroup>
+
 </Project>

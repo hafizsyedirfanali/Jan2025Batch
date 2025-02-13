@@ -100,8 +100,37 @@ public class _9_Inheritance
     {
         //Parent class
     }
-    //public class MultipleDerivedClass : MultipleBaseClass1, MultipleBaseClass2
+    //Following is multiple inheritance and is not allowed in c#
+    //public class MultipleDerivedClass : MultipleBaseClass1, MultipleBaseClass2 
     //{         //Child class
     //}
+    public interface IMultipleBaseInterface1
+    {
+        public int MyProperty { get; set; }
+    }
+    public interface IMultipleBaseInterface2
+    {
+        int Add(int a, int b);
+    }
+    //Following is not inheritance but it is implementation that looks like multiple inheritance
+    //that gives essence of multiple inheritance
+    public class MultipleDerivedClass : IMultipleBaseInterface1, IMultipleBaseInterface2
+    {
+        public int MyProperty//this is implementation
+        {
+            get
+            {
+                return MyProperty;
+            }
+            set
+            {
+                MyProperty = value;
+            }
+        }
 
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+    }
 }
