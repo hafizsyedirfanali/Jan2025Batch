@@ -1,13 +1,26 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@section Head {
+	<style>
+        .mystyle{
+			background-color: lightblue;
+        }
+    </style>
+}
+@section Scripts{
+    <script>
+		console.log("Hello from the Index page!");
+    </script>
+}
 
-<section class="intro">
+
+<section class="intro mystyle">
     <h1>Welcome to My Blog</h1>
     <p>This is a space where I share my thoughts, experiences, and ideas.</p>
 </section>
 
-<section class="posts">
+<section class="posts mystyle">
     <article class="post">
         <h2>My First Post</h2>
         <p>Published on February 14, 2025</p>

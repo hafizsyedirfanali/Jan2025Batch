@@ -1,0 +1,7 @@
+Create a web application with following requirements
+Home - Index | Privacy | Contact | About
+Institute - AvailableCourses | CourseDetails | TopRatedCourses
+Faculty - FacultyList | FacultyDetails
+Student - StudentList | StudentDetails
+Account - Login | Register | UpdateEmail
+Using Html, Css and Js 

@@ -17,11 +17,16 @@ public class HomeController : Controller
         return View();//default view is privacy view
     }
     [HttpGet]
-    public IActionResult Irfan()
+    public IActionResult About()
     {
-        throw new Exception("test error");
-        return View();
+        return View();//default view is privacy view
     }
+    [HttpGet]
+    public IActionResult Contact()
+    {
+        return View();//default view is privacy view
+    }
+   
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
