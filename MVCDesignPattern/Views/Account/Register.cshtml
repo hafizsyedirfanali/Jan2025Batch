@@ -1,5 +1,237 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+@section Head {
+    <style>
+        .register-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #6C63FF, #3F3D56);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem 1rem;
+        }
+
+        .register-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+            .register-header h1 {
+                color: #2C3E50;
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .register-header p {
+                color: #7F8C8D;
+                font-size: 1rem;
+            }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+            .form-group input {
+                width: 100%;
+                padding: 14px 35px 14px 15px;
+                border: 2px solid #E0E0E0;
+                border-radius: 10px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                background-color: white;
+            }
+
+                .form-group input:focus {
+                    border-color: #6C63FF;
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+                }
+
+            .form-group label {
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #95A5A6;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                font-size: 1rem;
+                padding: 0 5px;
+            }
+
+            .form-group input:focus + label,
+            .form-group input:not(:placeholder-shown) + label {
+                top: -12px;
+                left: 10px;
+                font-size: 0.8rem;
+                background-color: white;
+                color: #6C63FF;
+            }
+
+            .form-group .input-icon {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #95A5A6;
+            }
+
+        .register-button {
+            width: 100%;
+            padding: 14px;
+            background: #6C63FF;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+            .register-button:hover {
+                background: #5A52D5;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+            .login-link a {
+                color: #6C63FF;
+                text-decoration: none;
+                font-size: 0.95rem;
+                transition: color 0.3s ease;
+            }
+
+                .login-link a:hover {
+                    color: #5A52D5;
+                    text-decoration: underline;
+                }
+
+        @* Escaped @ symbol for keyframes *@
+        @@keyframes slideUp {
+            to
+
+        {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        }
+
+        .validation-message {
+            font-size: 0.8rem;
+            color: #e74c3c;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .form-group input:invalid:not(:placeholder-shown) ~ .validation-message {
+            display: block;
+        }
+    </style>
+}
+
+<div class="register-container">
+    <div class="register-box">
+        <div class="register-header">
+            <h1>Create Account</h1>
+            <p>Join us today! Please fill in your details</p>
+        </div>
+        <form asp-action="Register" asp-controller="Account" method="post">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder=" " required
+                       pattern="^[A-Za-z\s]{2,50}$">
+                <label for="name">Full Name</label>
+                <i class="fas fa-user input-icon"></i>
+                <div class="validation-message">Please enter a valid name (2-50 characters)</div>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Email Address</label>
+                <i class="fas fa-envelope input-icon"></i>
+                <div class="validation-message">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="mobileNo" name="mobileNo" placeholder=" " required
+                       pattern="^[0-9]{10}$">
+                <label for="mobileNo">Mobile Number</label>
+                <i class="fas fa-phone input-icon"></i>
+                <div class="validation-message">Please enter a valid 10-digit mobile number</div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder=" " required
+                       pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+                <label for="password">Password</label>
+                <i class="fas fa-lock input-icon"></i>
+                <div class="validation-message">Password must be at least 8 characters with letters and numbers</div>
+            </div>
+
+            <button type="submit" class="register-button">Create Account</button>
+
+            <div class="login-link">
+                Already have an account? <a asp-action="Login" asp-controller="Account">Sign In</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+
+                // Show password toggle
+                if (input.type === 'password') {
+                    const toggleIcon = document.createElement('i');
+                    toggleIcon.className = 'fas fa-eye input-icon';
+                    toggleIcon.style.right = '45px';
+                    toggleIcon.style.cursor = 'pointer';
+                    input.parentElement.appendChild(toggleIcon);
+
+                    toggleIcon.addEventListener('click', function() {
+                        const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                        input.setAttribute('type', type);
+                        this.className = `fas fa-eye${type === 'password' ? '' : '-slash'} input-icon`;
+                    });
+                }
+            });
+        });
+    </script>
 }

@@ -19,5 +19,10 @@ namespace MVCDesignPattern.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
     }
 }

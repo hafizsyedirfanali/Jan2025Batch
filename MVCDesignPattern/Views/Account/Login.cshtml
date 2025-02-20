@@ -1,5 +1,183 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@section Head {
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+            .login-header h1 {
+                color: #2C3E50;
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .login-header p {
+                color: #7F8C8D;
+                font-size: 1rem;
+            }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+            .form-group input {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #E0E0E0;
+                border-radius: 8px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+                .form-group input:focus {
+                    border-color: #4ECDC4;
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+                }
+
+            .form-group label {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #95A5A6;
+                transition: all 0.3s ease;
+                pointer-events: none;
+                font-size: 1rem;
+            }
+
+            .form-group input:focus + label,
+            .form-group input:not(:placeholder-shown) + label {
+                top: -10px;
+                left: 10px;
+                font-size: 0.8rem;
+                background-color: white;
+                padding: 0 5px;
+                color: #4ECDC4;
+            }
+
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: #4ECDC4;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .login-button:hover {
+                background: #45B7AC;
+                transform: translateY(-2px);
+            }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+            .forgot-password a {
+                color: #7F8C8D;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: color 0.3s ease;
+            }
+
+                .forgot-password a:hover {
+                    color: #4ECDC4;
+                }
+
+        @@keyframes slideUp {
+            to
+
+        {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        }
+
+        .form-group .input-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95A5A6;
+        }
+    </style>
+}
+
+<div class="login-container">
+    <div class="login-box">
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Please sign in to continue</p>
+        </div>
+        <form asp-action="Login" asp-controller="Account" method="post">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Email Address</label>
+                <i class="fas fa-envelope input-icon"></i>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder=" " required>
+                <label for="password">Password</label>
+                <i class="fas fa-lock input-icon"></i>
+            </div>
+            <button type="submit" class="login-button">Sign In</button>
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input');
+
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        });
+    </script>
 }

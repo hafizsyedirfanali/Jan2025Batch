@@ -3,5 +3,10 @@ Home - Index | Privacy | Contact | About
 Institute - AvailableCourses | CourseDetails | TopRatedCourses
 Faculty - FacultyList | FacultyDetails
 Student - StudentList | StudentDetails
-Account - Login | Register | UpdateEmail
-Using Html, Css and Js 
+Account - Login | Register | UpdateEmail | UpdatePassword
+
+-Notes: to create a page UpdatePassword
+1. you have to create a view in Account folder with UpdatePassword name
+2. you have to create an action in AccountController with UpdatePassword name
+
+Using Html, Css and Js
