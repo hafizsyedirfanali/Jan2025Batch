@@ -1,5 +1,273 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+
+
+
 @{
+    ViewData["Title"] = "Update Email Settings";
+}
+
+@section Head {
+    <style>
+        .update-container {
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, #6B8DD6, #8E37D7);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .update-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .update-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2C3E50;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+            .form-section h3 {
+                color: #2C3E50;
+                margin-bottom: 1rem;
+                font-size: 1.2rem;
+            }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #4a5568;
+                font-weight: 500;
+            }
+
+            .form-group input {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #E0E0E0;
+                border-radius: 8px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+            }
+
+                .form-group input:focus {
+                    border-color: #6B8DD6;
+                    outline: none;
+                    box-shadow: 0 0 0 3px rgba(107, 141, 214, 0.2);
+                }
+
+        .image-preview {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #E0E0E0;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+            .image-preview img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .remove-link {
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-button {
+            background: #6B8DD6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+            .add-button:hover {
+                background: #5A7BC0;
+                transform: translateY(-2px);
+            }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            background: #8E37D7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+            .submit-button:hover {
+                background: #7C2CBD;
+                transform: translateY(-2px);
+            }
+
+        @@keyframes slideIn {
+            to
+
+        {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        }
+
+        .invalid-feedback {
+            color: #FF6B6B;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+}
+
+<div class="update-container">
+    <div class="update-box">
+        <div class="update-header">
+            <h1>Update Email Settings</h1>
+            <p>Customize your email preferences and information</p>
+        </div>
+
+        <form asp-action="UpdateEmail" asp-controller="Account" method="post" enctype="multipart/form-data">
+            <!-- Profile Image Section -->
+            <div class="form-section">
+                <h3>Profile Image</h3>
+                <div class="form-group">
+                    <label for="profileImage">Upload Profile Image</label>
+                    <input type="file" id="profileImage" name="ProfileImage" accept="image/*" onchange="previewImage(this)">
+                    <div class="image-preview" id="imagePreview">
+                        <img src="#" alt="Preview" style="display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Settings Section -->
+            <div class="form-section">
+                <h3>Email Information</h3>
+                <div class="form-group">
+                    <label for="email">Primary Email</label>
+                    <input type="email" id="email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="Password" required>
+                </div>
+            </div>
+
+            <!-- Links Section -->
+            <div class="form-section">
+                <h3>Social Links</h3>
+                <div id="linkContainer">
+                    <div class="link-list" id="linkList">
+                        <!-- Dynamic links will be added here -->
+                    </div>
+                </div>
+                <button type="button" class="add-button" onclick="addLink('link')">
+                    <i class="fas fa-plus"></i> Add Social Link
+                </button>
+            </div>
+
+            <!-- Email Links Section -->
+            <div class="form-section">
+                <h3>Additional Email Addresses</h3>
+                <div id="emailLinkContainer">
+                    <div class="link-list" id="emailLinkList">
+                        <!-- Dynamic email links will be added here -->
+                    </div>
+                </div>
+                <button type="button" class="add-button" onclick="addLink('email')">
+                    <i class="fas fa-plus"></i> Add Email Address
+                </button>
+            </div>
+
+            <button type="submit" class="submit-button">Update Settings</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        function previewImage(input) {
+            const preview = document.getElementById('imagePreview').getElementsByTagName('img')[0];
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function addLink(type) {
+            const container = type === 'email' ? document.getElementById('emailLinkList') : document.getElementById('linkList');
+            const linkItem = document.createElement('div');
+            linkItem.className = 'link-item';
+
+            const input = document.createElement('input');
+            input.type = type === 'email' ? 'email' : 'url';
+            input.className = 'form-control';
+            input.name = type === 'email' ? 'AdditionalEmails[]' : 'SocialLinks[]';
+            input.required = true;
+            input.placeholder = type === 'email' ? 'Enter email address' : 'Enter social media link';
+
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.className = 'remove-link';
+            removeButton.innerHTML = '<i class="fas fa-times"></i>';
+            removeButton.onclick = function() {
+                container.removeChild(linkItem);
+            };
+
+            linkItem.appendChild(input);
+            linkItem.appendChild(removeButton);
+            container.appendChild(linkItem);
+        }
+    </script>
 }

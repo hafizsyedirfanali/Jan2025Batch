@@ -1,5 +1,12 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    var course = @TempData["Course"];
+    //TempData.Keep("Course");
+    TempData.Keep();//This will keep all the keys that are marked for deletion.
 }
+
+
+<section class="intro">
+    <h1>@course</h1>
+    <h2>@TempData.Peek("Date")</h2>
+</section>
