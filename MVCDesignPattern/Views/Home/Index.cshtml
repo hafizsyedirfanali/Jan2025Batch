@@ -4,7 +4,21 @@
 @section Head {
 	<style>
         .mystyle{
-			background-color: lightblue;
+        }
+
+        .container {
+            background-image: url('/images/matrix.jpg');
+			width: 100%;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        @@media (min-width: 600px) {
+            .container, .container-lg, .container-md, .container-sm, .container-xl
+
+        {
+            max-width: 1500px;
+        }
         }
     </style>
 }
@@ -14,25 +28,27 @@
     </script>
 }
 
+<div  class="mybackground">
 
-<section class="intro mystyle">
-    <h1>@ViewBag.Message</h1>
-    <p>@ViewBag.Text</p>
-    <h3>@ViewBag.Date</h3>
-</section>
+    <section class="intro mystyle">
+        <h1>@ViewBag.Message</h1>
+        <p>@ViewBag.Text</p>
+        <h3>@ViewBag.Date</h3>
+    </section>
 
-<section class="posts mystyle">
-    <article class="post">
-        <h2>My First Post</h2>
-        <p>Published on February 14, 2025</p>
-        <p>Welcome to my first post on this blog! Here, I’ll be sharing stories about my journey in coding and technology.</p>
-        <a href="#">Read more</a>
-    </article>
+    <section class="posts mystyle">
+        <article class="post">
+            <h2>My First Post</h2>
+            <p>Published on February 14, 2025</p>
+            <p>Welcome to my first post on this blog! Here, I’ll be sharing stories about my journey in coding and technology.</p>
+            <a href="#">Read more</a>
+        </article>
 
-    <article class="post">
-        <h2>Exploring New Technologies</h2>
-        <p>Published on February 10, 2025</p>
-        <p>In this post, I delve into some of the latest tech trends that are shaping the future. I’m particularly excited about AI and machine learning.</p>
-        <a href="#">Read more</a>
-    </article>
-</section>
+        <article class="post">
+            <h2>Exploring New Technologies</h2>
+            <p>Published on February 10, 2025</p>
+            <p>In this post, I delve into some of the latest tech trends that are shaping the future. I’m particularly excited about AI and machine learning.</p>
+            <a href="#">Read more</a>
+        </article>
+    </section>
+</div>
