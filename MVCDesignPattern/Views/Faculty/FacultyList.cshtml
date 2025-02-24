@@ -1,5 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using MVCDesignPattern.ViewModels
+@model FacultyViewModel[]
+
+
+@if(Model != null && Model.Length > 0)
+{
+<table class="table table-bordered table-warning">
+	<thead>
+		<tr>
+			<th>Sr.No.</th>
+			<th>Name of faculty</th>
+			<th>Designation</th>
+			<th>Experience</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for (int i = 0; i < Model.Length; i++)
+		{
+			<tr>
+				<td>@(i+1)</td>
+				<td>@Model[i].Name</td>
+				<td>@Model[i].Designation</td>
+				<td>@Model[i].Experience</td>
+			</tr>
+		}
+	</tbody>
+</table>
+}
+else{
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		No record found
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 }

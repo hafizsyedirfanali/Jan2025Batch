@@ -1,5 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using MVCDesignPattern.ViewModels
+@model FacultyViewModel
+
+@if(Model is not null)
+{
+	<table class="table">
+		<tr>
+			<td>Name: </td>
+			<td>@Model.Name</td>
+		</tr>
+		<tr>
+			<td>Designation: </td>
+			<td>@Model.Designation</td>
+		</tr>
+		<tr>
+			<td>Experience: </td>
+			<td>@Model.Experience</td>
+		</tr>
+	</table>
+}
+else
+{
+	<div class="alert alert-danger">
+		No record found
+	</div>
 }
