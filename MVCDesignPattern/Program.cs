@@ -1,7 +1,16 @@
+using MVCDesignPattern.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+///Service lifecycles
+///1. Singleton-single instance for all requests
+///2. Scoped-one instance for all the request from a scope
+///3. Transient-new instance for every request
+
+builder.Services.AddSingleton<FacultyServices>();
+
 
 var app = builder.Build();
 

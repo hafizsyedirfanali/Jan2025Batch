@@ -1,0 +1,18 @@
+﻿@using MVCDesignPattern.ViewModels
+@model FacultyViewModel
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Experience</label>
+        <input class="form-control" asp-for="Experience">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Designation</label>
+        <input class="form-control" asp-for="Designation">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
