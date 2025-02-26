@@ -4,15 +4,19 @@
 	int j = 1;
 }
 
+<a asp-controller="Faculty" asp-action="AddFaculty" class="btn btn-sm btn-outline-primary">Add Faculty</a>
+
+
 @if(Model != null && Model.Count > 0)
 {
 <table class="table table-bordered table-warning">
 	<thead>
 		<tr>
-			<th>Sr.No.</th>
+			<th>Id</th>
 			<th>Name of faculty</th>
 			<th>Designation</th>
 			<th>Experience</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,10 +33,21 @@
 		@foreach (var faculty in Model)
 		{
 			<tr>
-				<td>@(j++)</td>
+				<td>@faculty.Id</td>
 				<td>@faculty.Name</td>
 				<td>@faculty.Designation</td>
 				<td>@faculty.Experience</td>
+				<td>
+					
+					<form method="post" asp-controller="Faculty" asp-action="DeleteFaculty" 
+					asp-route-id="@faculty.Id">
+
+							<a asp-controller="Faculty" asp-action="FacultyDetails"
+							   asp-route-id="@faculty.Id" class="btn btn-sm">Details</a>
+
+							<button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete @faculty.Name?')">Delete</button>
+					</form>
+				</td>
 			</tr>
 		}
 	</tbody>

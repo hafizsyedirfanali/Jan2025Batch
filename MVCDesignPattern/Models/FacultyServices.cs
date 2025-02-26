@@ -8,12 +8,14 @@ public class FacultyServices
     {
         FacultyViewModel f1 = new()
         {
+            Id = 1,
             Name = "Abcd",
             Designation = "Professor",
             Experience = 10.0f
         };
         FacultyViewModel f2 = new()
         {
+            Id = 2,
             Name = "Efgh",
             Designation = "Asst. Prof.",
             Experience = 6.0f
@@ -21,6 +23,7 @@ public class FacultyServices
 
         FacultyViewModel f3 = new()
         {
+            Id = 3,
             Name = "Ijkl",
             Designation = "Asst. Prof.",
             Experience = 4.0f

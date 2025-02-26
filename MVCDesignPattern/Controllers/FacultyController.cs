@@ -28,21 +28,27 @@ namespace MVCDesignPattern.Controllers
         public IActionResult AddFaculty(FacultyViewModel model)
         {
             var faculties = facultyServices.Faculties;//saving the ref(address) of Faculties
+            //model.Id = faculties.Count + 1;
+            model.Id = faculties.Max(x => x.Id) + 1;//select id column and find max and add 1 to it.
             faculties.Add(model);//adding the faculty (model) in the list at ref(address)
-            return View(model);
+            return RedirectToAction("FacultyList");
         }
 
 
         [HttpGet]
-        public IActionResult FacultyDetails()
+        //[Route("FacultyList/{id:int}")]
+        public IActionResult FacultyDetails([FromRoute] int id)
         {
-            FacultyViewModel model = new()
-            {
-                Name = "Abcd",
-                Designation = "Professor",
-                Experience = 10.0f
-            };
+            var model = facultyServices.Faculties.Find(x => x.Id == id);
             return View(model);
+        }
+        [HttpPost]
+        public IActionResult DeleteFaculty([FromRoute] int id)
+        {
+            var model = facultyServices.Faculties.Find(x => x.Id == id);
+            if(model != null)
+                facultyServices.Faculties.Remove(model);
+            return RedirectToAction("FacultyList");
         }
     }
 }
