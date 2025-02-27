@@ -45,6 +45,9 @@
 							<a asp-controller="Faculty" asp-action="FacultyDetails"
 							   asp-route-id="@faculty.Id" class="btn btn-sm">Details</a>
 
+							<a asp-controller="Faculty" asp-action="EditFaculty"
+							   asp-route-id="@faculty.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+
 							<button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete @faculty.Name?')">Delete</button>
 					</form>
 				</td>

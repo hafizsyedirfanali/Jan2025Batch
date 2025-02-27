@@ -20,6 +20,47 @@ namespace MVCDesignPattern.Controllers
             return View(model);
         }
         [HttpGet]
+        public IActionResult EditFaculty(int id)
+        {
+            var model = facultyServices.Faculties.Find(x => x.Id == id);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult EditFaculty(FacultyViewModel model)
+        {
+            var faculty = facultyServices.Faculties.Find(x => x.Id == model.Id);
+            if (faculty is not null)
+            {
+                faculty.Name = model.Name;
+                faculty.Designation = model.Designation;
+                faculty.Experience = model.Experience; 
+            }
+            return RedirectToAction("FacultyList");
+        }
+        [HttpGet]
+        public IActionResult UpdateAllFaculties()
+        {
+            var model = facultyServices.Faculties;
+
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult UpdateAllFaculties(FacultyViewModel[] model)
+        {
+            foreach (var item in model)
+            {
+                var faculty = facultyServices.Faculties.Find(x => x.Id == item.Id);
+                if (faculty is not null)
+                {
+                    faculty.Name = item.Name;
+                    faculty.Designation = item.Designation;
+                    faculty.Experience = item.Experience;
+                }
+            }
+            return RedirectToAction("FacultyList");
+        }
+
+        [HttpGet]
         public IActionResult AddFaculty()
         {
             return View();
