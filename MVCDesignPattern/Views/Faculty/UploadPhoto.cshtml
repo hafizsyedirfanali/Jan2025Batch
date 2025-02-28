@@ -1,0 +1,18 @@
+﻿@model MVCDesignPattern.ViewModels.FacultyPhotoViewModel
+
+<form method="post" enctype="multipart/form-data">
+	<table>
+		<tr>
+			<td>Upload Photo</td>
+			<td>
+				<input type="file" asp-for="Photo" class="form-control" />
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<button type="submit" class="btn btn-success">Upload</button>
+			</td>
+		</tr>
+	</table>
+</form>

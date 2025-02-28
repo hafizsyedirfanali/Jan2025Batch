@@ -20,31 +20,41 @@
 				</tr>
 			</thead>
 			<tbody>
-				@* @for (int i = 0; i < Model.Length; i++)
-		{
-			<tr>
-				<td>@(i+1)</td>
-				<td>@Model[i].Name</td>
-				<td>@Model[i].Designation</td>
-				<td>@Model[i].Experience</td>
-			</tr>
-		} *@
+				@for (int i = 0; i < Model.Count; i++)
+				{
+					<tr>
+						<td>
+							<input hidden asp-for="@Model[i].Id" />
+							@Model[i].Id
+						</td>
+						<td>
+							<input asp-for="@Model[i].Name" />
+						</td>
+						<td>
+							<input asp-for="@Model[i].Designation" />
+						</td>
+						<td>
+							<input asp-for="@Model[i].Experience" />
+						</td>
+					</tr>
+				}
 
-				@foreach (var faculty in Model)
+				@* @foreach (var faculty in Model)
 				{
 					<tr>
 						<td>@faculty.Id</td>
 						<td>
-							<input id="Name" name="Name" value="@faculty.Name" />
+							<input asp-for="@faculty.Name" />
 						</td>
 						<td>
-							<input id="Designation" name="Designation" value="@faculty.Designation" />
+							<input asp-for="@faculty.Designation" />
 						</td>
 						<td>
-							<input id="Experience" name="Experience" value="@faculty.Experience" />
+							<input asp-for="@faculty.Experience" />
 						</td>
 					</tr>
-				}
+				} *@
+
 			</tbody>
 		</table>
 		<button type="submit" class="btn btn-outline-success">Update all faculties</button>

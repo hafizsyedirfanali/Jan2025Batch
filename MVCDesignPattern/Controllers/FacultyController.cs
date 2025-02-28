@@ -7,10 +7,14 @@ namespace MVCDesignPattern.Controllers
     public class FacultyController : Controller
     {
         private readonly FacultyServices facultyServices;
+        private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly string uploadFolder;
 
-        public FacultyController(FacultyServices facultyServices)
+        public FacultyController(FacultyServices facultyServices, IWebHostEnvironment webHostEnvironment)
         {
             this.facultyServices = facultyServices;
+            this.webHostEnvironment = webHostEnvironment;
+            this.uploadFolder = Path.Combine(webHostEnvironment.WebRootPath, "uploads");
         }
         [HttpGet]
         public IActionResult FacultyList()
@@ -33,7 +37,7 @@ namespace MVCDesignPattern.Controllers
             {
                 faculty.Name = model.Name;
                 faculty.Designation = model.Designation;
-                faculty.Experience = model.Experience; 
+                faculty.Experience = model.Experience;
             }
             return RedirectToAction("FacultyList");
         }
@@ -69,7 +73,7 @@ namespace MVCDesignPattern.Controllers
         public IActionResult AddFaculty(FacultyViewModel model)
         {
             var faculties = facultyServices.Faculties;//saving the ref(address) of Faculties
-            //model.Id = faculties.Count + 1;
+                                                      //model.Id = faculties.Count + 1;
             model.Id = faculties.Max(x => x.Id) + 1;//select id column and find max and add 1 to it.
             faculties.Add(model);//adding the faculty (model) in the list at ref(address)
             return RedirectToAction("FacultyList");
@@ -87,8 +91,35 @@ namespace MVCDesignPattern.Controllers
         public IActionResult DeleteFaculty([FromRoute] int id)
         {
             var model = facultyServices.Faculties.Find(x => x.Id == id);
-            if(model != null)
+            if (model != null)
                 facultyServices.Faculties.Remove(model);
+            return RedirectToAction("FacultyList");
+        }
+
+        [HttpGet]
+        public IActionResult UploadPhoto()
+        {
+            FacultyPhotoViewModel model = new FacultyPhotoViewModel();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult UploadPhoto(FacultyPhotoViewModel model)
+        {
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }
+
+            if (model.Photo != null && model.Photo.Length > 0)
+            {
+                var filePath = Path.Combine(uploadFolder, model.Photo.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.Photo.CopyTo(stream);
+                }
+            }
+
             return RedirectToAction("FacultyList");
         }
     }
