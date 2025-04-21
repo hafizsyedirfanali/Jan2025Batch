@@ -8,4 +8,5 @@ public class Student
     public string? Email { get; set; }
     public string? Address { get; set; }
     public byte Age { get; set; }
+    public List<Attendance> Attendances { get; set; }
 }

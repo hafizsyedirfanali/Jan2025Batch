@@ -12,4 +12,6 @@ public class Attendance
     public int StudentId { get; set; }
     public DateTime Date { get; set; }
     public bool IsPresent { get; set; }
+    public Batch Batch { get; set; } // Navigation Property
+    public Student Student { get; set; } // Navigation Property
 }

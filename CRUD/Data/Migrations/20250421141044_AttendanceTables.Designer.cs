@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUD.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250418142829_AttendanceTables")]
+    [Migration("20250421141044_AttendanceTables")]
     partial class AttendanceTables
     {
         /// <inheritdoc />
@@ -47,6 +47,10 @@ namespace CRUD.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BatchId");
+
+                    b.HasIndex("StudentId");
+
                     b.ToTable("Attendances");
                 });
 
@@ -69,6 +73,8 @@ namespace CRUD.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
 
                     b.ToTable("Batches");
                 });
@@ -329,6 +335,36 @@ namespace CRUD.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CRUD.Data.DTOs.Attendance", b =>
+                {
+                    b.HasOne("CRUD.Data.DTOs.Batch", "Batch")
+                        .WithMany("Attendances")
+                        .HasForeignKey("BatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CRUD.Data.DTOs.Student", "Student")
+                        .WithMany("Attendances")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Batch");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("CRUD.Data.DTOs.Batch", b =>
+                {
+                    b.HasOne("CRUD.Data.DTOs.Course", "Course")
+                        .WithMany("Batches")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -378,6 +414,21 @@ namespace CRUD.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CRUD.Data.DTOs.Batch", b =>
+                {
+                    b.Navigation("Attendances");
+                });
+
+            modelBuilder.Entity("CRUD.Data.DTOs.Course", b =>
+                {
+                    b.Navigation("Batches");
+                });
+
+            modelBuilder.Entity("CRUD.Data.DTOs.Student", b =>
+                {
+                    b.Navigation("Attendances");
                 });
 #pragma warning restore 612, 618
         }

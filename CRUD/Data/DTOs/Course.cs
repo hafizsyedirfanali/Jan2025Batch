@@ -6,5 +6,6 @@ public class Course
     public string Name { get; set; }
     public string Duration { get; set; }
     public int Fees { get; set; }
+    public List<Batch> Batches { get; set; }
 
 }
