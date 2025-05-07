@@ -27,8 +27,12 @@ mobileNo : string = "1234567890";
 address : string = "123 Main St, City, Country";
   isActive : boolean = false;
   hobbies : string[] = ["Reading", "Traveling", "Cooking"];
+
+switchCondition : "Yes"|"No"|"Invalid" = "Invalid";
+iconPath:string = "https://cdn-icons-png.flaticon.com/512/25/25231.png";
+
 student : Student = {
-  id:1,
+    id:1,
     name: "John Doe",
     age: 20, 
     gender : 'male'
@@ -54,6 +58,15 @@ students : Student[] = [
 }
 
 ]
+
+// function clickJsFunction(){
+
+// }
+
+clickFunction():void {
+  alert("Hello world");
+}
+
 
 
 }

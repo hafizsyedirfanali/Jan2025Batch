@@ -5,6 +5,9 @@
 <p>Address: {{address}}</p>
 <p>Is Active : {{isActive}}</p>
 
+@let temp = "Hello World!";
+<p>Temp: {{temp}}</p>
+
 @if(isActive) {
     <ul>
         <li *ngFor="let hobby of hobbies; let i = index">Hobby {{i + 1}}: {{hobby}}</li>
@@ -71,6 +74,22 @@
             }
         </tbody>
     </table>
-}@else {
+}
+@else {
    <h1>Student is not active</h1>
 }
+
+@switch (switchCondition) {
+    @case ('Yes') {
+      <h1>Condition is yes</h1>
+    }
+    @case ('No') {
+        <h1>Condition is no</h1>
+    }
+    @default {
+        <h1>Condition is not defined</h1>
+    }
+  }
+
+  <button (click)="clickFunction()">Click me</button>
+  <img [src]="iconPath" alt=""/>
