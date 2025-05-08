@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ChildComponent } from "../child/child.component";
 
 interface Student {
   id: number;
@@ -10,9 +12,12 @@ interface Student {
 
 @Component({
   selector: 'app-interpolation',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ChildComponent],
   templateUrl: './interpolation.component.html',
-  styleUrl: './interpolation.component.css'
+  styleUrl: './interpolation.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush// // OnPush is used to optimize the performance of the component by reducing the number of change detection cycles
+  // Default is used to check the change detection for every change in the component
+  // changeDetection: ChangeDetectionStrategy.Default
 })
 export class InterpolationComponent {
   //typeScript style
@@ -25,12 +30,18 @@ age : number = 10;
 gender : string ="male";
 mobileNo : string = "1234567890";
 address : string = "123 Main St, City, Country";
-  isActive : boolean = false;
+  isActive : boolean = true;
   hobbies : string[] = ["Reading", "Traveling", "Cooking"];
 
 switchCondition : "Yes"|"No"|"Invalid" = "Invalid";
 iconPath:string = "https://cdn-icons-png.flaticon.com/512/25/25231.png";
-
+altImage = "GitHub Logo";
+newStudent : Student = {
+  id:0,
+  name: "Irfan",
+  gender: "",
+  age: 0,
+};
 student : Student = {
     id:1,
     name: "John Doe",
@@ -67,6 +78,14 @@ clickFunction():void {
   alert("Hello world");
 }
 
-
+addStudent():void {
+  this.students.push(this.newStudent);
+  this.newStudent = {
+    id:0,
+    name:"",
+    age:0,
+    gender:""
+  }
+}
 
 }
