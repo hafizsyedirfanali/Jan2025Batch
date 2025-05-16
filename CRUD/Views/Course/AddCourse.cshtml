@@ -1,0 +1,18 @@
+﻿@model AddCourseViewModel
+
+<form method="post" asp-controller="Course" asp-action="AddCourse">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Duration</label>
+        <input class="form-control" asp-for="Duration">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fees</label>
+        <input class="form-control" asp-for="Fees">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Course" asp-action="Courses" class="btn btn-outline-primary">Back</a>
+</form>

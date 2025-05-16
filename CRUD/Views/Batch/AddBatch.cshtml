@@ -1,0 +1,26 @@
+﻿@model AddStudentViewModel
+
+<form method="post" asp-controller="Student" asp-action="AddStudent">
+    <div class="mb-3">
+        <label class="form-label" asp-for="Name"></label>
+        <input class="form-control" asp-for="Name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="ContactNo"></label>
+        <input class="form-control" asp-for="ContactNo">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Email"></label>
+        <input class="form-control" asp-for="Email">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Address"></label>
+        <input class="form-control" asp-for="Address">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Age"></label>
+        <input class="form-control" asp-for="Age">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Student" asp-action="Students" class="btn btn-outline-primary">Back</a>
+</form>

@@ -1,0 +1,47 @@
+﻿@model List<CRUD.Data.DTOs.Course>
+@* CRUD.Data.DTO.Course -> Fully qualified name space*@
+
+@{
+}
+<a asp-controller="Course" asp-action="AddCourse" class="btn btn-sm btn-primary">Add Course</a>
+@if(Model is not null){
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Duration</th>
+				<th>Fees</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Id</td>
+					<td>@item.Name</td>
+					<td>@item.Duration</td>
+					<td>@item.Fees</td>
+					<td>
+						<form method="post" asp-controller="Course" asp-action="DeleteCourse"
+							  asp-route-id="@item.Id">
+							<a asp-controller="Course" asp-action="EditCourse"
+							   asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+
+							<button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete @item.Name?')">Delete</button>
+						</form>
+					</td>
+				</tr>
+			}
+			@if(Model.Count == 0){
+				<tr>
+					<td colspan="5">No Record Found</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else{
+	<h1>No record found</h1>
+}

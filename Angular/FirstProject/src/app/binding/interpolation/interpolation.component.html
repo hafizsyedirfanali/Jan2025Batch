@@ -1,0 +1,122 @@
+<p>Name: {{name}}</p>
+<p>Age: {{age}}</p>
+<p>Gender: {{gender}}</p>
+<p>Phone: {{mobileNo}}</p>
+<p>Address: {{address}}</p>
+<p>Is Active : {{isActive}}</p>
+
+@let temp = "Hello World!";
+<p>Temp: {{temp}}</p>
+
+@if(isActive) {
+    <ul>
+        <li *ngFor="let hobby of hobbies; let i = index">Hobby {{i + 1}}: {{hobby}}</li>
+    </ul>
+    
+    <ul>
+        @for(hobby of hobbies; track hobby) {
+            <li>Hobby: {{hobby}}</li>
+          }
+    </ul>
+    
+    <table class="table table-bordered">
+        <tr>
+            <td>Name</td>
+            <td>{{student.name}}</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>{{student.age}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{student.gender}}</td>
+        </tr>
+    </table>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Name</th>
+                <th>Age</th>
+                </tr>
+                </thead>
+    <tbody>
+        <tr *ngFor="let student of students; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.age}}</td>
+            <td>{{student.gender}}</td>
+            </tr>
+    </tbody>
+    
+       
+    </table>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(student of students; track student.id){
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.age}}</td>
+                    <td>{{student.gender}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" [(ngModel)]="newStudent.name" placeholder="Enter name" />
+            </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>
+                <input type="number" [(ngModel)]="newStudent.age" placeholder="Enter age" />
+            </td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="text" [(ngModel)]="newStudent.gender" [placeholder]="'Gender'">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button (click)="addStudent()">Add Student</button>
+            </td>
+        </tr>
+      </table>
+}
+@else {
+   <h1>Student is not active</h1>
+}
+
+@switch (switchCondition) {
+    @case ('Yes') {
+      <h1>Condition is yes</h1>
+    }
+    @case ('No') {
+        <h1>Condition is no</h1>
+    }
+    @default {
+        <h1>Condition is not defined</h1>
+    }
+  }
+
+  <button (click)="clickFunction()">Click me</button>
+  <img [src]="iconPath" [alt]="altImage"/>
+
+  <app-child [message]="'Hello from parent'" [students]="students" ></app-child>
